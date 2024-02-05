@@ -1,0 +1,60 @@
+package Page;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Temp extends JFrame {
+
+    public Temp() {
+        setTitle("Temp Bar Example");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 200);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+
+        JButton homeButton = new JButton("Home");
+        JButton aboutButton = new JButton("About");
+        JButton contactButton = new JButton("Contact");
+
+        homeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked Home button");
+            }
+        });
+
+        aboutButton.addActionListener(new ActionListener() {
+//            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked About button");
+            }
+        });
+
+        contactButton.addActionListener(new ActionListener() {
+//            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked Contact button");
+            }
+        });
+
+        panel.add(homeButton);
+        panel.add(aboutButton);
+        panel.add(contactButton);
+
+        add(panel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+            public void run() {
+                new Temp();
+            }
+        });
+    }
+}

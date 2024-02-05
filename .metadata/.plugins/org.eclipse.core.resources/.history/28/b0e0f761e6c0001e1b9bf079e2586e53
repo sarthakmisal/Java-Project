@@ -1,0 +1,75 @@
+package Page;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
+
+public class Temp extends JFrame implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public Temp() {
+        setTitle("Navigation Bar Example");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+
+        // Logo strip
+        JPanel logoPanel = new JPanel();
+        JLabel logoLabel = new JLabel(new ImageIcon("your_logo_image_path.png")); // Replace with your logo image path
+        logoPanel.add(logoLabel);
+
+        mainPanel.add(logoPanel, BorderLayout.NORTH);
+
+        // Navigation panel with equally distributed buttons
+//        JPanel navigationPanel = new JPanel(new GridLayout(1, 3, 10, 0)); // 1 row, 3 columns, with horizontal gap
+//        navigationPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
+
+        JButton homeButton = new JButton("Home");
+        JButton aboutButton = new JButton("About");
+        JButton contactButton = new JButton("Contact");
+
+        // Customize buttons as needed
+        homeButton.addActionListener(new ActionListener() {
+             
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked Home button");
+            }
+        });
+
+        aboutButton.addActionListener(new ActionListener() {
+             
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked About button");
+            }
+        });
+
+        contactButton.addActionListener(new ActionListener() {
+             
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked Contact button");
+            }
+        });
+
+        navigationPanel.add(homeButton);
+        navigationPanel.add(aboutButton);
+        navigationPanel.add(contactButton);
+
+        mainPanel.add(navigationPanel, BorderLayout.CENTER);
+
+        add(mainPanel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Temp();
+            }
+        });
+    }
+}

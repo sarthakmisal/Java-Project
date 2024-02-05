@@ -1,0 +1,95 @@
+package Page;
+import java.net.URI;
+import java.net.*;
+import javax.swing.*;
+import javax.imageio.ImageIO;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.Serializable;
+
+public class Temp extends JFrame implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    public Temp() {
+        setTitle("Navigation Bar Example");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        
+        JPanel logoPanel=new JPanel();
+        try {
+            // Provide a direct link to the image file
+        	URI uri = new URI("https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFile%3ASpotify_logo_horizontal_white.jpg&psig=AOvVaw3dnWt9JA-o6-CEdeV-89My&ust=1706863861396000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCJiT0frhiYQDFQAAAAAdAAAAABAE");
+        	BufferedImage image = ImageIO.read(uri.toURL());
+//            ImageIcon icon = new ImageIcon(uri);
+//            JLabel logoLabel = new JLabel(icon);
+            logoPanel.add(logoPanel);
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        panel.add(logoPanel, BorderLayout.NORTH);
+        JPanel navigationPanel = new JPanel(new GridLayout(1, 3, 10, 0)); // 1 row, 3 columns, with horizontal gap
+        navigationPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add padding
+
+        
+        JButton homeButton = new JButton("Home");
+        JButton aboutButton = new JButton("About");
+        JButton contactButton = new JButton("Contact");
+        JButton catagoryButton=new JButton("Catagory");
+
+        Dimension buttonSize = new Dimension(120, 40); // Adjust the button size as needed
+        homeButton.setPreferredSize(buttonSize);
+        aboutButton.setPreferredSize(buttonSize);
+        contactButton.setPreferredSize(buttonSize);
+        catagoryButton.setPreferredSize(buttonSize);
+
+        homeButton.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked Home button");
+            }
+        });
+
+        aboutButton.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked About button");
+            }
+        });
+
+        contactButton.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "You clicked Contact button");
+            }
+        });
+        
+        catagoryButton.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showMessageDialog(null,"You Clicked Catagory Button");
+        	}
+        });
+
+        panel.add(homeButton);
+        panel.add(aboutButton);
+        panel.add(contactButton);
+        panel.add(catagoryButton);
+
+        add(panel);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new Temp();
+            }
+        });
+    }
+}

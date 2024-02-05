@@ -1,0 +1,16 @@
+package Page;
+
+import java.awt.*;
+import javax.swing.JFrame;
+
+public class MyCanvas extends Canvas{
+
+	private static final long serialVersionUID = 1L;
+	public void paint(Graphics g) {
+		Toolkit t=Toolkit.getDefaultToolkit();
+		Image i=t.getImage("C:\\Users\\HP\\Downloads\\spotify.png");
+		g.drawImage(i, 50,60,this);
+			
+			
+	}
+}
